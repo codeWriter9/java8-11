@@ -14,8 +14,19 @@ public class Main {
   public static void streamCalls() {
     // Stream 
     StreamDemo streamDemo = new StreamDemo();
-    streamDemo.fixedStream().forEach(streamDemo.consume());
+    // Lambda consume a Stream
+    streamDemo.fixedStream().forEach(streamDemo.lambdaConsume());
     System.out.println();
+    // Consume a Stream using Method Expression
+    streamDemo.fixedStream().forEach(streamDemo.methodRefConsume());  
+    System.out.println();
+    // Lambda consume a random Stream
+    streamDemo.randomStream().limit(5).forEach(streamDemo.lambdaConsumeDouble());
+    System.out.println();
+    // Consume a random Stream using Method Expression
+    streamDemo.randomStream().limit(5).forEach(streamDemo.methodRefConsumeDouble());  
+    System.out.println();
+
   }
 
   public static void main(String[] args) {    

@@ -1,12 +1,29 @@
-import java.util.stream.*;
-import java.util.function.*;
+import java.util.stream.Stream;
+import java.util.function.Consumer;
 
 public class StreamDemo {
+
   public Stream fixedStream() {
     return Stream.of(3, 1, 4, 1, 5, 9);
   }
 
-  public Consumer<Integer> consume() {
+  public Stream randomStream() {
+    return Stream.generate(Math::random);
+  }
+
+  public Consumer<Integer> lambdaConsume() {
     return x -> System.out.print(x + ", ");
+  }
+
+  public Consumer<Integer> methodRefConsume() {
+    return System.out::print;
+  }
+
+  public Consumer<Double> lambdaConsumeDouble() {
+    return x -> System.out.print(x + ", ");
+  }
+
+  public Consumer<Double> methodRefConsumeDouble() {
+    return System.out::print;
   }
 }
