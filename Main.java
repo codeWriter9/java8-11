@@ -1,17 +1,19 @@
 class Main {    
 
   public static void main(String[] args) {    
-    // Old way
+    // call 1
     new RunnableDemo().oldWay().start();    
-   // New way
-   new RunnableDemo().newWay().start();
+    // call 2
+    new RunnableDemo().newWay().start();
+    // call 3
+    new Thread(new RunnableDemo().newWay2()).start();
   }
 }
 
 class RunnableDemo {
 
   public Thread oldWay() {
-    // Old way
+    // Inner class 
     return new Thread(new Runnable()
       {
         public void run() {
@@ -22,7 +24,12 @@ class RunnableDemo {
   }
 
   public Thread newWay() {
-    // New way
+    // Using Lambda to create a Thread
    return new Thread(() -> System.out.println("Using Lambda"));
+  }
+
+  public Runnable newWay2() {
+    // Return a runnable 
+    return () -> System.out.println("Using Lambda");
   }
 }
