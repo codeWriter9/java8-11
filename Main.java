@@ -20,11 +20,20 @@ public class Main {
     // Consume a Stream using Method Expression
     streamDemo.fixedStream().forEach(streamDemo.methodRefConsume());  
     System.out.println();
-    // Lambda consume a random Stream
+    // Lambda consume a random Double Stream
     streamDemo.randomStream().limit(5).forEach(streamDemo.lambdaConsumeDouble());
     System.out.println();
-    // Consume a random Stream using Method Expression
+    // Consume a random Double Stream using Method Expression
     streamDemo.randomStream().limit(5).forEach(streamDemo.methodRefConsumeDouble());  
+    System.out.println();
+
+    // Lambda consume a random Double Stream
+    streamDemo.randomStream().limit(5).map(x -> x * 100)
+    .mapToInt(x -> x.intValue()).boxed().forEach(streamDemo.lambdaConsume());
+    System.out.println();
+    // Consume a random Double Stream using Method Expression
+    streamDemo.randomStream().limit(5).map(x -> x * 100)
+    .mapToInt(x -> x.intValue()).boxed().forEach(streamDemo.methodRefConsume());  
     System.out.println();
 
   }

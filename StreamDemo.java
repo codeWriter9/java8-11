@@ -3,11 +3,11 @@ import java.util.function.Consumer;
 
 public class StreamDemo {
 
-  public Stream fixedStream() {
+  public Stream<Integer> fixedStream() {
     return Stream.of(3, 1, 4, 1, 5, 9);
   }
 
-  public Stream randomStream() {
+  public Stream<Double> randomStream() {
     return Stream.generate(Math::random);
   }
 
