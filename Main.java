@@ -56,9 +56,26 @@ public class Main {
 
   }
 
+  public static void streamCalls3() {
+    // Stream 
+    StreamDemo streamDemo = new StreamDemo();
+
+    streamDemo.mcu().stream().sorted(Comparator.reverseOrder())
+    .collect(Collectors.toList()).forEach
+    (streamDemo.lambdaConsumeStr());
+    System.out.println();
+
+    streamDemo.mcu().stream().sorted(Comparator.reverseOrder())
+    .collect(Collectors.toList()).forEach
+    (streamDemo.methodRefConsumeStr());
+    System.out.println();
+
+  }
+
   public static void main(String[] args) {    
-    threadCalls();
-    streamCalls();    
-    streamCalls2();
+    //threadCalls();
+    //streamCalls();    
+    //streamCalls2();
+    streamCalls3();
   }
 }
