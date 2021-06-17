@@ -1,3 +1,6 @@
+import java.util.Comparator;
+import java.util.stream.Collectors;
+
 public class Main {
 
   public static void threadCalls() {
@@ -35,11 +38,27 @@ public class Main {
     streamDemo.randomStream().limit(5).map(x -> x * 100)
     .mapToInt(x -> x.intValue()).boxed().forEach(streamDemo.methodRefConsume());  
     System.out.println();
+  }
+
+  public static void streamCalls2() {
+    // Stream 
+    StreamDemo streamDemo = new StreamDemo();
+
+    streamDemo.mcu().stream().sorted(Comparator.naturalOrder())
+    .collect(Collectors.toList()).forEach
+    (streamDemo.lambdaConsumeStr());
+    System.out.println();
+
+    streamDemo.mcu().stream().sorted(Comparator.naturalOrder())
+    .collect(Collectors.toList()).forEach
+    (streamDemo.methodRefConsumeStr());
+    System.out.println();
 
   }
 
   public static void main(String[] args) {    
     threadCalls();
     streamCalls();    
+    streamCalls2();
   }
 }
