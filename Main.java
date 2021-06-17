@@ -72,10 +72,63 @@ public class Main {
 
   }
 
+  public static void streamCalls4() {
+    // Stream 
+    StreamDemo streamDemo = new StreamDemo();
+
+    streamDemo.mcu().stream().sorted(Comparator.comparing(String::toLowerCase))
+    .collect(Collectors.toList()).forEach
+    (streamDemo.lambdaConsumeStr());
+    System.out.println();
+
+    streamDemo.mcu().stream().sorted(Comparator.comparing(String::toLowerCase))
+    .collect(Collectors.toList()).forEach
+    (streamDemo.methodRefConsumeStr());
+    System.out.println();
+
+  }
+
+  public static void streamCalls5() {
+    // Stream 
+    StreamDemo streamDemo = new StreamDemo();
+
+    streamDemo.mcu().stream().sorted(Comparator.comparing(String::length))
+    .collect(Collectors.toList()).forEach
+    (streamDemo.lambdaConsumeStr());
+    System.out.println();
+
+    streamDemo.mcu().stream().sorted(Comparator.comparing(String::length))
+    .collect(Collectors.toList()).forEach
+    (streamDemo.methodRefConsumeStr());
+    System.out.println();
+
+  }
+
+  public static void streamCalls6() {
+    // Stream 
+    StreamDemo streamDemo = new StreamDemo();
+
+    streamDemo.mcu().stream().sorted(Comparator.comparing(String::length)
+    .thenComparing(Comparator.reverseOrder()))
+    .collect(Collectors.toList()).forEach
+    (streamDemo.lambdaConsumeStr());
+    System.out.println();
+
+    streamDemo.mcu().stream().sorted(Comparator.comparing(String::length)
+    .thenComparing(Comparator.reverseOrder()))
+    .collect(Collectors.toList()).forEach
+    (streamDemo.methodRefConsumeStr());
+    System.out.println();
+
+  }
+
   public static void main(String[] args) {    
     //threadCalls();
     //streamCalls();    
     //streamCalls2();
-    streamCalls3();
+    //streamCalls3();
+    //streamCalls4();
+    //streamCalls5();
+    streamCalls6();
   }
 }
