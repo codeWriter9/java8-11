@@ -17,41 +17,45 @@ public class Main {
   public static void streamCalls() {
     // Stream 
     StreamDemo streamDemo = new StreamDemo();
+    // Consumers 
+    Consumers consumer = new Consumers();
     // Lambda consume a Stream
-    streamDemo.fixedStream().forEach(streamDemo.lambdaConsume());
+    streamDemo.fixedStream().forEach(consumer.lambdaConsume());
     System.out.println();
     // Consume a Stream using Method Expression
-    streamDemo.fixedStream().forEach(streamDemo.methodRefConsume());  
+    streamDemo.fixedStream().forEach(consumer.methodRefConsume());  
     System.out.println();
     // Lambda consume a random Double Stream
-    streamDemo.randomStream().limit(5).forEach(streamDemo.lambdaConsumeDouble());
+    streamDemo.randomStream().limit(5).forEach(consumer.lambdaConsumeDouble());
     System.out.println();
     // Consume a random Double Stream using Method Expression
-    streamDemo.randomStream().limit(5).forEach(streamDemo.methodRefConsumeDouble());  
+    streamDemo.randomStream().limit(5).forEach(consumer.methodRefConsumeDouble());  
     System.out.println();
 
     // Lambda consume a random Double Stream
     streamDemo.randomStream().limit(5).map(x -> x * 100)
-    .mapToInt(x -> x.intValue()).boxed().forEach(streamDemo.lambdaConsume());
+    .mapToInt(x -> x.intValue()).boxed().forEach(consumer.lambdaConsume());
     System.out.println();
     // Consume a random Double Stream using Method Expression
     streamDemo.randomStream().limit(5).map(x -> x * 100)
-    .mapToInt(x -> x.intValue()).boxed().forEach(streamDemo.methodRefConsume());  
+    .mapToInt(x -> x.intValue()).boxed().forEach(consumer.methodRefConsume());  
     System.out.println();
   }
 
   public static void streamCalls2() {
     // Stream 
     StreamDemo streamDemo = new StreamDemo();
+    // Consumer
+    Consumers consumer = new Consumers();
 
     streamDemo.mcu().stream().sorted(Comparator.naturalOrder())
     .collect(Collectors.toList()).forEach
-    (streamDemo.lambdaConsumeStr());
+    (consumer.lambdaConsumeStr());
     System.out.println();
 
     streamDemo.mcu().stream().sorted(Comparator.naturalOrder())
     .collect(Collectors.toList()).forEach
-    (streamDemo.methodRefConsumeStr());
+    (consumer.methodRefConsumeStr());
     System.out.println();
 
   }
@@ -59,15 +63,17 @@ public class Main {
   public static void streamCalls3() {
     // Stream 
     StreamDemo streamDemo = new StreamDemo();
+    // Consumer
+    Consumers consumer = new Consumers();
 
     streamDemo.mcu().stream().sorted(Comparator.reverseOrder())
     .collect(Collectors.toList()).forEach
-    (streamDemo.lambdaConsumeStr());
+    (consumer.lambdaConsumeStr());
     System.out.println();
 
     streamDemo.mcu().stream().sorted(Comparator.reverseOrder())
     .collect(Collectors.toList()).forEach
-    (streamDemo.methodRefConsumeStr());
+    (consumer.methodRefConsumeStr());
     System.out.println();
 
   }
@@ -75,15 +81,17 @@ public class Main {
   public static void streamCalls4() {
     // Stream 
     StreamDemo streamDemo = new StreamDemo();
+    // Consumer
+    Consumers consumer = new Consumers();
 
     streamDemo.mcu().stream().sorted(Comparator.comparing(String::toLowerCase))
     .collect(Collectors.toList()).forEach
-    (streamDemo.lambdaConsumeStr());
+    (consumer.lambdaConsumeStr());
     System.out.println();
 
     streamDemo.mcu().stream().sorted(Comparator.comparing(String::toLowerCase))
     .collect(Collectors.toList()).forEach
-    (streamDemo.methodRefConsumeStr());
+    (consumer.methodRefConsumeStr());
     System.out.println();
 
   }
@@ -91,15 +99,17 @@ public class Main {
   public static void streamCalls5() {
     // Stream 
     StreamDemo streamDemo = new StreamDemo();
+    // Consumer
+    Consumers consumer = new Consumers();
 
     streamDemo.mcu().stream().sorted(Comparator.comparing(String::length))
     .collect(Collectors.toList()).forEach
-    (streamDemo.lambdaConsumeStr());
+    (consumer.lambdaConsumeStr());
     System.out.println();
 
     streamDemo.mcu().stream().sorted(Comparator.comparing(String::length))
     .collect(Collectors.toList()).forEach
-    (streamDemo.methodRefConsumeStr());
+    (consumer.methodRefConsumeStr());
     System.out.println();
 
   }
@@ -107,17 +117,19 @@ public class Main {
   public static void streamCalls6() {
     // Stream 
     StreamDemo streamDemo = new StreamDemo();
+    // Consumer
+    Consumers consumer = new Consumers();
 
     streamDemo.mcu().stream().sorted(Comparator.comparing(String::length)
     .thenComparing(Comparator.reverseOrder()))
     .collect(Collectors.toList()).forEach
-    (streamDemo.lambdaConsumeStr());
+    (consumer.lambdaConsumeStr());
     System.out.println();
 
     streamDemo.mcu().stream().sorted(Comparator.comparing(String::length)
     .thenComparing(Comparator.reverseOrder()))
     .collect(Collectors.toList()).forEach
-    (streamDemo.methodRefConsumeStr());
+    (consumer.methodRefConsumeStr());
     System.out.println();
 
   }
