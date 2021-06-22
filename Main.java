@@ -154,14 +154,30 @@ public class Main {
     strConsumer.accept(optionalDemo.findFirst(PredicateDemo.spiderman, optionalDemo.mcu()).orElse("Value Not Present"));
   }
 
+  public static void optionalCalls2() {
+    // Optional
+    OptionalDemo optionalDemo = new OptionalDemo();
+    // Predicate
+    PredicateDemo predicateDemo = new PredicateDemo();
+    // Consumer
+    Consumers consumers = new Consumers();
+    // optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).get();
+    
+    Consumer<String> strConsumer = a -> System.out.println(a);
+    
+    optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).ifPresent(strConsumer);
+    optionalDemo.findFirst(PredicateDemo.spiderman, optionalDemo.mcu()).ifPresent(strConsumer);
+  }
+
   public static void main(String[] args) {    
-    threadCalls();
+    //threadCalls();
     //streamCalls();    
     //streamCalls2();
     //streamCalls3();
     //streamCalls4();
     //streamCalls5();
     //streamCalls6();
-    optionalCalls();
+    //optionalCalls();
+    optionalCalls2();
   }
 }
