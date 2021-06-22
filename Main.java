@@ -150,7 +150,8 @@ public class Main {
     intConsumer.accept(1);
     Consumer<String> strConsumer = a -> System.out.println(a);
     strConsumer.accept("1");
-    strConsumer.accept(optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).get());
+    strConsumer.accept(optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).orElse("Value Not Present"));
+    strConsumer.accept(optionalDemo.findFirst(PredicateDemo.spiderman, optionalDemo.mcu()).orElse("Value Not Present"));
   }
 
   public static void main(String[] args) {    
