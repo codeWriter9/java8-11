@@ -1,4 +1,5 @@
 import java.util.Comparator;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -47,12 +48,14 @@ public class Main {
     StreamDemo streamDemo = new StreamDemo();
     // Consumer
     Consumers consumer = new Consumers();
-
+    // Lambda consume a fixed String Stream
+    // Sorted in natural order
     streamDemo.mcu().stream().sorted(Comparator.naturalOrder())
     .collect(Collectors.toList()).forEach
     (consumer.lambdaConsumeStr());
     System.out.println();
-
+    // Consume a fixed String Stream using Method Expression
+    // Sorted in natural order
     streamDemo.mcu().stream().sorted(Comparator.naturalOrder())
     .collect(Collectors.toList()).forEach
     (consumer.methodRefConsumeStr());
@@ -65,12 +68,14 @@ public class Main {
     StreamDemo streamDemo = new StreamDemo();
     // Consumer
     Consumers consumer = new Consumers();
-
+    // Lambda consume a fixed String Stream
+    // Sorted in reverse order
     streamDemo.mcu().stream().sorted(Comparator.reverseOrder())
     .collect(Collectors.toList()).forEach
     (consumer.lambdaConsumeStr());
     System.out.println();
-
+    // Consume a fixed String Stream using Method Expression
+    // Sorted in reverse order
     streamDemo.mcu().stream().sorted(Comparator.reverseOrder())
     .collect(Collectors.toList()).forEach
     (consumer.methodRefConsumeStr());
@@ -83,12 +88,12 @@ public class Main {
     StreamDemo streamDemo = new StreamDemo();
     // Consumer
     Consumers consumer = new Consumers();
-
+    // Lambda consume a fixed String Stream
     streamDemo.mcu().stream().sorted(Comparator.comparing(String::toLowerCase))
     .collect(Collectors.toList()).forEach
     (consumer.lambdaConsumeStr());
     System.out.println();
-
+    // Consume a fixed String Stream using Method Expression
     streamDemo.mcu().stream().sorted(Comparator.comparing(String::toLowerCase))
     .collect(Collectors.toList()).forEach
     (consumer.methodRefConsumeStr());
@@ -101,12 +106,12 @@ public class Main {
     StreamDemo streamDemo = new StreamDemo();
     // Consumer
     Consumers consumer = new Consumers();
-
+    // Lambda consume a fixed String Stream
     streamDemo.mcu().stream().sorted(Comparator.comparing(String::length))
     .collect(Collectors.toList()).forEach
     (consumer.lambdaConsumeStr());
     System.out.println();
-
+    // Consume a fixed String Stream using Method Expression
     streamDemo.mcu().stream().sorted(Comparator.comparing(String::length))
     .collect(Collectors.toList()).forEach
     (consumer.methodRefConsumeStr());
@@ -119,28 +124,43 @@ public class Main {
     StreamDemo streamDemo = new StreamDemo();
     // Consumer
     Consumers consumer = new Consumers();
-
+    // Lambda consume a fixed String Stream
     streamDemo.mcu().stream().sorted(Comparator.comparing(String::length)
     .thenComparing(Comparator.reverseOrder()))
     .collect(Collectors.toList()).forEach
     (consumer.lambdaConsumeStr());
     System.out.println();
-
+    // Consume a fixed String Stream using Method Expression
     streamDemo.mcu().stream().sorted(Comparator.comparing(String::length)
     .thenComparing(Comparator.reverseOrder()))
     .collect(Collectors.toList()).forEach
     (consumer.methodRefConsumeStr());
     System.out.println();
+  }
 
+  public static void optionalCalls() {
+    // Optional
+    OptionalDemo optionalDemo = new OptionalDemo();
+    // Predicate
+    PredicateDemo predicateDemo = new PredicateDemo();
+    // Consumer
+    Consumers consumers = new Consumers();
+    // optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).get();
+    Consumer<Integer> intConsumer = a -> System.out.println(a);
+    intConsumer.accept(1);
+    Consumer<String> strConsumer = a -> System.out.println(a);
+    strConsumer.accept("1");
+    strConsumer.accept(optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).get());
   }
 
   public static void main(String[] args) {    
-    //threadCalls();
+    threadCalls();
     //streamCalls();    
     //streamCalls2();
     //streamCalls3();
     //streamCalls4();
     //streamCalls5();
-    streamCalls6();
+    //streamCalls6();
+    optionalCalls();
   }
 }
