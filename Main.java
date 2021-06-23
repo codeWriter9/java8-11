@@ -8,6 +8,7 @@ public class Main {
   private static ConsumersFactory consumer = new ConsumersFactory();
   private static PredicateDemo predicateDemo = new PredicateDemo();
   private static OptionalDemo optionalDemo = new OptionalDemo();
+  private static StringDemo stringDemo = new StringDemo();
 
   public static void threadCalls() {
     // Thread call 
@@ -136,6 +137,13 @@ public class Main {
     optionalDemo.findFirst(PredicateDemo.spiderman, optionalDemo.mcu()).ifPresent(consumer.methodRefConsumeStr());
   }
 
+  public static void stringCalls() {    
+    consumer.lambdaConsumeStr().accept(stringDemo.repeatCaller("La ", 2, "Land"));
+    consumer.lambdaConsumeStr().accept(stringDemo.repeatCaller("No Man's", "Land"));
+    consumer.lambdaConsumeStr().accept(">>" + stringDemo.stripCaller("     without Blanks   ") + "<<");
+    consumer.lambdaConsumeStr().accept("" + stringDemo.countLines("This is\nA Multi Line Comment\n."));
+  }
+
   public static void main(String[] args) {    
     //threadCalls();
     //streamCalls();    
@@ -145,6 +153,7 @@ public class Main {
     //streamCalls5();
     //streamCalls6();
     //optionalCalls();
-    optionalCalls2();
+    //optionalCalls2();
+    stringCalls();
   }
 }
