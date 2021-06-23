@@ -1,25 +1,26 @@
 import java.util.Comparator;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public class Main {
 
+  private static RunnableDemo runnableDemo = new RunnableDemo();
+  private static StreamDemo streamDemo = new StreamDemo();
+  private static ConsumersFactory consumer = new ConsumersFactory();
+  private static PredicateDemo predicateDemo = new PredicateDemo();
+  private static OptionalDemo optionalDemo = new OptionalDemo();
+
   public static void threadCalls() {
     // Thread call 
     // call 1
-    new RunnableDemo().oldWay().start();    
+    runnableDemo.oldWay().start();    
     // call 2
-    new RunnableDemo().newWay().start();
+    runnableDemo.newWay().start();
     // call 3
-    new Thread(new RunnableDemo().newWay2()).start();
+    new Thread(runnableDemo.newWay2()).start();
     
   }    
 
-  public static void streamCalls() {
-    // Stream 
-    StreamDemo streamDemo = new StreamDemo();
-    // Consumers 
-    ConsumersFactory consumer = new ConsumersFactory();
+  public static void streamCalls() {    
     // Lambda consume a Stream
     streamDemo.fixedStream().forEach(consumer.lambdaConsume());
     System.out.println();
@@ -43,11 +44,7 @@ public class Main {
     System.out.println();
   }
 
-  public static void streamCalls2() {
-    // Stream 
-    StreamDemo streamDemo = new StreamDemo();
-    // Consumer
-    ConsumersFactory consumer = new ConsumersFactory();
+  public static void streamCalls2() {    
     // Lambda consume a fixed String Stream
     // Sorted in natural order
     streamDemo.mcu().stream().sorted(Comparator.naturalOrder())
@@ -63,11 +60,7 @@ public class Main {
 
   }
 
-  public static void streamCalls3() {
-    // Stream 
-    StreamDemo streamDemo = new StreamDemo();
-    // Consumer
-    ConsumersFactory consumer = new ConsumersFactory();
+  public static void streamCalls3() {    
     // Lambda consume a fixed String Stream
     // Sorted in reverse order
     streamDemo.mcu().stream().sorted(Comparator.reverseOrder())
@@ -83,11 +76,7 @@ public class Main {
 
   }
 
-  public static void streamCalls4() {
-    // Stream 
-    StreamDemo streamDemo = new StreamDemo();
-    // Consumer
-    ConsumersFactory consumer = new ConsumersFactory();
+  public static void streamCalls4() {    
     // Lambda consume a fixed String Stream
     streamDemo.mcu().stream().sorted(Comparator.comparing(String::toLowerCase))
     .collect(Collectors.toList()).forEach
@@ -101,11 +90,7 @@ public class Main {
 
   }
 
-  public static void streamCalls5() {
-    // Stream 
-    StreamDemo streamDemo = new StreamDemo();
-    // Consumer
-    ConsumersFactory consumer = new ConsumersFactory();
+  public static void streamCalls5() {    
     // Lambda consume a fixed String Stream
     streamDemo.mcu().stream().sorted(Comparator.comparing(String::length))
     .collect(Collectors.toList()).forEach
@@ -119,11 +104,7 @@ public class Main {
 
   }
 
-  public static void streamCalls6() {
-    // Stream 
-    StreamDemo streamDemo = new StreamDemo();
-    // Consumer
-    ConsumersFactory consumer = new ConsumersFactory();
+  public static void streamCalls6() {    
     // Lambda consume a fixed String Stream
     streamDemo.mcu().stream().sorted(Comparator.comparing(String::length)
     .thenComparing(Comparator.reverseOrder()))
@@ -138,34 +119,21 @@ public class Main {
     System.out.println();
   }
 
-  public static void optionalCalls() {
-    // Optional
-    OptionalDemo optionalDemo = new OptionalDemo();
-    // Predicate
-    PredicateDemo predicateDemo = new PredicateDemo();
-    // Consumer
-    ConsumersFactory consumers = new ConsumersFactory();   
-    
-    
-    consumers.lambdaConsumeStr().accept(optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).orElse("Value Not Present"));
-    consumers.lambdaConsumeStr().accept(optionalDemo.findFirst(PredicateDemo.spiderman, optionalDemo.mcu()).orElse("Value Not Present"));
+  public static void optionalCalls() {    
+    // Consume only if present or show that value is not there
+    consumer.lambdaConsumeStr().accept(optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).orElse("Value Not Present"));
+    consumer.lambdaConsumeStr().accept(optionalDemo.findFirst(PredicateDemo.spiderman, optionalDemo.mcu()).orElse("Value Not Present"));
 
-    consumers.methodRefConsumeStr().accept(optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).orElse("Value Not Present"));
-    consumers.methodRefConsumeStr().accept(optionalDemo.findFirst(PredicateDemo.spiderman, optionalDemo.mcu()).orElse("Value Not Present"));
+    consumer.methodRefConsumeStr().accept(optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).orElse("Value Not Present"));
+    consumer.methodRefConsumeStr().accept(optionalDemo.findFirst(PredicateDemo.spiderman, optionalDemo.mcu()).orElse("Value Not Present"));
   }
 
-  public static void optionalCalls2() {
-    // Optional
-    OptionalDemo optionalDemo = new OptionalDemo();
-    // Predicate
-    PredicateDemo predicateDemo = new PredicateDemo();
-    // Consumer
-    ConsumersFactory consumers = new ConsumersFactory();    
-    
-    optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).ifPresent(consumers.lambdaConsumeStr());
-    optionalDemo.findFirst(PredicateDemo.spiderman, optionalDemo.mcu()).ifPresent(consumers.lambdaConsumeStr());
-    optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).ifPresent(consumers.methodRefConsumeStr());
-    optionalDemo.findFirst(PredicateDemo.spiderman, optionalDemo.mcu()).ifPresent(consumers.methodRefConsumeStr());
+  public static void optionalCalls2() {    
+    // Consume only if present 
+    optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).ifPresent(consumer.lambdaConsumeStr());
+    optionalDemo.findFirst(PredicateDemo.spiderman, optionalDemo.mcu()).ifPresent(consumer.lambdaConsumeStr());
+    optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).ifPresent(consumer.methodRefConsumeStr());
+    optionalDemo.findFirst(PredicateDemo.spiderman, optionalDemo.mcu()).ifPresent(consumer.methodRefConsumeStr());
   }
 
   public static void main(String[] args) {    
