@@ -144,12 +144,14 @@ public class Main {
     // Predicate
     PredicateDemo predicateDemo = new PredicateDemo();
     // Consumer
-    ConsumersFactory consumers = new ConsumersFactory();
+    ConsumersFactory consumers = new ConsumersFactory();   
     
-    Consumer<String> strConsumer = consumers.lambdaConsumeStr();
     
-    strConsumer.accept(optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).orElse("Value Not Present"));
-    strConsumer.accept(optionalDemo.findFirst(PredicateDemo.spiderman, optionalDemo.mcu()).orElse("Value Not Present"));
+    consumers.lambdaConsumeStr().accept(optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).orElse("Value Not Present"));
+    consumers.lambdaConsumeStr().accept(optionalDemo.findFirst(PredicateDemo.spiderman, optionalDemo.mcu()).orElse("Value Not Present"));
+
+    consumers.methodRefConsumeStr().accept(optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).orElse("Value Not Present"));
+    consumers.methodRefConsumeStr().accept(optionalDemo.findFirst(PredicateDemo.spiderman, optionalDemo.mcu()).orElse("Value Not Present"));
   }
 
   public static void optionalCalls2() {
@@ -162,6 +164,8 @@ public class Main {
     
     optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).ifPresent(consumers.lambdaConsumeStr());
     optionalDemo.findFirst(PredicateDemo.spiderman, optionalDemo.mcu()).ifPresent(consumers.lambdaConsumeStr());
+    optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).ifPresent(consumers.methodRefConsumeStr());
+    optionalDemo.findFirst(PredicateDemo.spiderman, optionalDemo.mcu()).ifPresent(consumers.methodRefConsumeStr());
   }
 
   public static void main(String[] args) {    
@@ -172,7 +176,7 @@ public class Main {
     //streamCalls4();
     //streamCalls5();
     //streamCalls6();
-    optionalCalls();
+    //optionalCalls();
     optionalCalls2();
   }
 }
