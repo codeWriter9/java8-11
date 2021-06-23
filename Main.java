@@ -19,7 +19,7 @@ public class Main {
     // Stream 
     StreamDemo streamDemo = new StreamDemo();
     // Consumers 
-    Consumers consumer = new Consumers();
+    ConsumersFactory consumer = new ConsumersFactory();
     // Lambda consume a Stream
     streamDemo.fixedStream().forEach(consumer.lambdaConsume());
     System.out.println();
@@ -47,7 +47,7 @@ public class Main {
     // Stream 
     StreamDemo streamDemo = new StreamDemo();
     // Consumer
-    Consumers consumer = new Consumers();
+    ConsumersFactory consumer = new ConsumersFactory();
     // Lambda consume a fixed String Stream
     // Sorted in natural order
     streamDemo.mcu().stream().sorted(Comparator.naturalOrder())
@@ -67,7 +67,7 @@ public class Main {
     // Stream 
     StreamDemo streamDemo = new StreamDemo();
     // Consumer
-    Consumers consumer = new Consumers();
+    ConsumersFactory consumer = new ConsumersFactory();
     // Lambda consume a fixed String Stream
     // Sorted in reverse order
     streamDemo.mcu().stream().sorted(Comparator.reverseOrder())
@@ -87,7 +87,7 @@ public class Main {
     // Stream 
     StreamDemo streamDemo = new StreamDemo();
     // Consumer
-    Consumers consumer = new Consumers();
+    ConsumersFactory consumer = new ConsumersFactory();
     // Lambda consume a fixed String Stream
     streamDemo.mcu().stream().sorted(Comparator.comparing(String::toLowerCase))
     .collect(Collectors.toList()).forEach
@@ -105,7 +105,7 @@ public class Main {
     // Stream 
     StreamDemo streamDemo = new StreamDemo();
     // Consumer
-    Consumers consumer = new Consumers();
+    ConsumersFactory consumer = new ConsumersFactory();
     // Lambda consume a fixed String Stream
     streamDemo.mcu().stream().sorted(Comparator.comparing(String::length))
     .collect(Collectors.toList()).forEach
@@ -123,7 +123,7 @@ public class Main {
     // Stream 
     StreamDemo streamDemo = new StreamDemo();
     // Consumer
-    Consumers consumer = new Consumers();
+    ConsumersFactory consumer = new ConsumersFactory();
     // Lambda consume a fixed String Stream
     streamDemo.mcu().stream().sorted(Comparator.comparing(String::length)
     .thenComparing(Comparator.reverseOrder()))
@@ -144,12 +144,10 @@ public class Main {
     // Predicate
     PredicateDemo predicateDemo = new PredicateDemo();
     // Consumer
-    Consumers consumers = new Consumers();
-    // optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).get();
-    Consumer<Integer> intConsumer = a -> System.out.println(a);
-    intConsumer.accept(1);
-    Consumer<String> strConsumer = a -> System.out.println(a);
-    strConsumer.accept("1");
+    ConsumersFactory consumers = new ConsumersFactory();
+    
+    Consumer<String> strConsumer = consumers.lambdaConsumeStr();
+    
     strConsumer.accept(optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).orElse("Value Not Present"));
     strConsumer.accept(optionalDemo.findFirst(PredicateDemo.spiderman, optionalDemo.mcu()).orElse("Value Not Present"));
   }
@@ -160,13 +158,10 @@ public class Main {
     // Predicate
     PredicateDemo predicateDemo = new PredicateDemo();
     // Consumer
-    Consumers consumers = new Consumers();
-    // optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).get();
+    ConsumersFactory consumers = new ConsumersFactory();    
     
-    Consumer<String> strConsumer = a -> System.out.println(a);
-    
-    optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).ifPresent(strConsumer);
-    optionalDemo.findFirst(PredicateDemo.spiderman, optionalDemo.mcu()).ifPresent(strConsumer);
+    optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).ifPresent(consumers.lambdaConsumeStr());
+    optionalDemo.findFirst(PredicateDemo.spiderman, optionalDemo.mcu()).ifPresent(consumers.lambdaConsumeStr());
   }
 
   public static void main(String[] args) {    
@@ -177,7 +172,7 @@ public class Main {
     //streamCalls4();
     //streamCalls5();
     //streamCalls6();
-    //optionalCalls();
+    optionalCalls();
     optionalCalls2();
   }
 }

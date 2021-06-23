@@ -1,6 +1,6 @@
 import java.util.function.Consumer;
 
-public class Consumers {
+public class ConsumersFactory {
     public Consumer<Integer> lambdaConsume() {
     return x -> System.out.print(x + ", ");
   }
