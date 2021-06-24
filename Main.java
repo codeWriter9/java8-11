@@ -1,5 +1,13 @@
 import java.util.Comparator;
+import java.util.Date;
 import java.util.stream.Collectors;
+import java.time.Clock;
+import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZonedDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
 
 public class Main {
 
@@ -9,6 +17,7 @@ public class Main {
   private static PredicateDemo predicateDemo = new PredicateDemo();
   private static OptionalDemo optionalDemo = new OptionalDemo();
   private static StringDemo stringDemo = new StringDemo();
+  private static DateTimeDemo dateTimeDemo = new DateTimeDemo();
 
   public static void threadCalls() {
     // Thread call 
@@ -141,7 +150,21 @@ public class Main {
     consumer.lambdaConsumeStr().accept(stringDemo.repeatCaller("La ", 2, "Land"));
     consumer.lambdaConsumeStr().accept(stringDemo.repeatCaller("No Man's", "Land"));
     consumer.lambdaConsumeStr().accept(">>" + stringDemo.stripCaller("     without Blanks   ") + "<<");
-    consumer.lambdaConsumeStr().accept("" + stringDemo.countLines("This is\nA Multi Line Comment\n."));
+    consumer.methodRefConsumeLong().accept(stringDemo.countLines("This is\nA Multi Line Comment\n."));
+  }
+
+  public static void timeDemoCalls() {
+    consumer.lambdaConsumeStr().accept("Time Today: " + dateTimeDemo.currentTimeToday()
+    );
+    consumer.lambdaConsumeStr().accept("Time Today[Zone]: " + dateTimeDemo.currentTimeToday().toInstant(ZoneOffset.UTC));
+    consumer.lambdaConsumeStr().accept("Millis: " + dateTimeDemo.currentTimeToday().toInstant(ZoneOffset.UTC).toEpochMilli());
+    consumer.lambdaConsumeStr().accept("Today: " + dateTimeDemo.today()
+    );
+    consumer.lambdaConsumeStr().accept("Time Now: " + dateTimeDemo.currentTime()
+    );
+    consumer.lambdaConsumeStr().accept("Millis Seconds Now: " + dateTimeDemo.millisTillNow());
+    consumer.lambdaConsumeStr().accept("Legacy Date with Millis: " + new Date(dateTimeDemo.millisTillNow()));
+    consumer.lambdaConsumeStr().accept("Current Time: " + dateTimeDemo.currentTimeFromMillis());    
   }
 
   public static void main(String[] args) {    
@@ -154,6 +177,7 @@ public class Main {
     //streamCalls6();
     //optionalCalls();
     //optionalCalls2();
-    stringCalls();
+    //stringCalls();
+    timeDemoCalls();
   }
 }

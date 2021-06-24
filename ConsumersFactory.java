@@ -9,6 +9,10 @@ public class ConsumersFactory {
     return System.out::print;
   }
 
+  public Consumer<Long> methodRefConsumeLong() {
+    return System.out::println;
+  }
+
   public Consumer<Double> lambdaConsumeDouble() {
     return x -> System.out.print(x + ", ");
   }
