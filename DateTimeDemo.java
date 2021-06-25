@@ -6,6 +6,7 @@ import java.time.LocalTime;
 import java.time.ZonedDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
+import java.util.Date;
 
 
 
@@ -17,6 +18,14 @@ public class DateTimeDemo {
 
       public LocalDate today() {
         return LocalDate.now();
+      }
+
+      public LocalDate tomorrow() {
+        return today().plusDays(1);
+      }
+
+      public LocalDate yesterday() {
+        return today().minusDays(1);
       }
 
       public LocalTime currentTime() {
@@ -38,6 +47,14 @@ public class DateTimeDemo {
       public LocalDateTime currentTimeFromMillis() {
         return LocalDateTime.ofInstant(
           Instant.ofEpochMilli(millisTillNow()),
+            utcZoneId()
+        );
+      }
+
+
+     public LocalDateTime currentTimeFromMillis(Date date) {
+        return LocalDateTime.ofInstant(
+          Instant.ofEpochMilli(date.getTime()),
             utcZoneId()
         );
       }

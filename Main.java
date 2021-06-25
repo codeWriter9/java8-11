@@ -1,12 +1,6 @@
 import java.util.Comparator;
 import java.util.Date;
 import java.util.stream.Collectors;
-import java.time.Clock;
-import java.time.LocalDateTime;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.ZonedDateTime;
-import java.time.ZoneId;
 import java.time.ZoneOffset;
 
 public class Main {
@@ -156,15 +150,30 @@ public class Main {
   public static void timeDemoCalls() {
     consumer.lambdaConsumeStr().accept("Time Today: " + dateTimeDemo.currentTimeToday()
     );
-    consumer.lambdaConsumeStr().accept("Time Today[Zone]: " + dateTimeDemo.currentTimeToday().toInstant(ZoneOffset.UTC));
+    consumer.methodRefConsumeStr().accept("Time Today[Zone]: " + dateTimeDemo.currentTimeToday().toInstant(ZoneOffset.UTC));
+    
     consumer.lambdaConsumeStr().accept("Millis: " + dateTimeDemo.currentTimeToday().toInstant(ZoneOffset.UTC).toEpochMilli());
-    consumer.lambdaConsumeStr().accept("Today: " + dateTimeDemo.today()
+    
+    consumer.methodRefConsumeStr().accept("Today: " + dateTimeDemo.today()
     );
     consumer.lambdaConsumeStr().accept("Time Now: " + dateTimeDemo.currentTime()
     );
-    consumer.lambdaConsumeStr().accept("Millis Seconds Now: " + dateTimeDemo.millisTillNow());
+
+    consumer.methodRefConsumeStr().accept("Millis Seconds Now: " + dateTimeDemo.millisTillNow());
+
     consumer.lambdaConsumeStr().accept("Legacy Date with Millis: " + new Date(dateTimeDemo.millisTillNow()));
-    consumer.lambdaConsumeStr().accept("Current Time: " + dateTimeDemo.currentTimeFromMillis());    
+
+    consumer.methodRefConsumeStr().accept("Current Time: " + dateTimeDemo.currentTimeFromMillis()); 
+
+    consumer.lambdaConsumeStr().accept("Current Time[From Date]: " + dateTimeDemo.currentTimeFromMillis(new Date()));    
+
+    System.out.println();
+  }
+
+  public static void timeDemoCalls2() {
+    consumer.lambdaConsumeStr().accept("Yesterday: " + dateTimeDemo.yesterday());    
+    consumer.lambdaConsumeStr().accept("Today: " + dateTimeDemo.today());    
+    consumer.lambdaConsumeStr().accept("Tomorrow: " + dateTimeDemo.tomorrow());    
   }
 
   public static void main(String[] args) {    
@@ -179,5 +188,6 @@ public class Main {
     //optionalCalls2();
     //stringCalls();
     timeDemoCalls();
+    timeDemoCalls2();
   }
 }
