@@ -28,6 +28,10 @@ public class DateTimeDemo {
         return today().minusDays(1);
       }
 
+      public Long daysSince1970() {
+        return today().toEpochDay();
+      }
+
       public LocalTime noon() {
         return LocalTime.of(12, 0, 0);
       }
@@ -49,8 +53,8 @@ public class DateTimeDemo {
         return ZoneId.of("Z");
       }
 
-      public ZoneId istZoneId() {
-        return ZoneId.of(ZoneId.SHORT_IDS.get("IST"));
+      public ZoneId istZoneId() {        
+        return ZoneId.of("IST", ZoneId.SHORT_IDS);
       }
 
       public ZoneOffset utcZoneOffset() {

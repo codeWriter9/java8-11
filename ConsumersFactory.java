@@ -1,7 +1,12 @@
 import java.util.function.Consumer;
 
 public class ConsumersFactory {
-    public Consumer<Integer> lambdaConsume() {
+
+  public static void newLine() {
+    System.out.println();
+  }
+
+  public Consumer<Integer> lambdaConsume() {
     return x -> System.out.print(x + ", ");
   }
 

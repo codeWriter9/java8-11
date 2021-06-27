@@ -3,6 +3,9 @@ import java.util.Date;
 import java.util.stream.Collectors;
 import java.time.ZoneOffset;
 
+
+
+
 public class Main {
 
   private static RunnableDemo runnableDemo = new RunnableDemo();
@@ -27,25 +30,25 @@ public class Main {
   public static void streamCalls() {    
     // Lambda consume a Stream
     streamDemo.fixedStream().forEach(consumer.lambdaConsume());
-    System.out.println();
+    ConsumersFactory.newLine();
     // Consume a Stream using Method Expression
     streamDemo.fixedStream().forEach(consumer.methodRefConsume());  
-    System.out.println();
+    ConsumersFactory.newLine();
     // Lambda consume a random Double Stream
     streamDemo.randomStream().limit(5).forEach(consumer.lambdaConsumeDouble());
-    System.out.println();
+    ConsumersFactory.newLine();
     // Consume a random Double Stream using Method Expression
     streamDemo.randomStream().limit(5).forEach(consumer.methodRefConsumeDouble());  
-    System.out.println();
+    ConsumersFactory.newLine();
 
     // Lambda consume a random Double Stream
     streamDemo.randomStream().limit(5).map(x -> x * 100)
     .mapToInt(x -> x.intValue()).boxed().forEach(consumer.lambdaConsume());
-    System.out.println();
+    ConsumersFactory.newLine();
     // Consume a random Double Stream using Method Expression
     streamDemo.randomStream().limit(5).map(x -> x * 100)
     .mapToInt(x -> x.intValue()).boxed().forEach(consumer.methodRefConsume());  
-    System.out.println();
+    ConsumersFactory.newLine();
   }
 
   public static void streamCalls2() {    
@@ -54,13 +57,13 @@ public class Main {
     streamDemo.mcu().stream().sorted(Comparator.naturalOrder())
     .collect(Collectors.toList()).forEach
     (consumer.lambdaConsumeStr());
-    System.out.println();
+    ConsumersFactory.newLine();
     // Consume a fixed String Stream using Method Expression
     // Sorted in natural order
     streamDemo.mcu().stream().sorted(Comparator.naturalOrder())
     .collect(Collectors.toList()).forEach
     (consumer.methodRefConsumeStr());
-    System.out.println();
+    ConsumersFactory.newLine();
 
   }
 
@@ -70,13 +73,13 @@ public class Main {
     streamDemo.mcu().stream().sorted(Comparator.reverseOrder())
     .collect(Collectors.toList()).forEach
     (consumer.lambdaConsumeStr());
-    System.out.println();
+    ConsumersFactory.newLine();
     // Consume a fixed String Stream using Method Expression
     // Sorted in reverse order
     streamDemo.mcu().stream().sorted(Comparator.reverseOrder())
     .collect(Collectors.toList()).forEach
     (consumer.methodRefConsumeStr());
-    System.out.println();
+    ConsumersFactory.newLine();
 
   }
 
@@ -85,12 +88,12 @@ public class Main {
     streamDemo.mcu().stream().sorted(Comparator.comparing(String::toLowerCase))
     .collect(Collectors.toList()).forEach
     (consumer.lambdaConsumeStr());
-    System.out.println();
+    ConsumersFactory.newLine();
     // Consume a fixed String Stream using Method Expression
     streamDemo.mcu().stream().sorted(Comparator.comparing(String::toLowerCase))
     .collect(Collectors.toList()).forEach
     (consumer.methodRefConsumeStr());
-    System.out.println();
+    ConsumersFactory.newLine();
 
   }
 
@@ -99,12 +102,12 @@ public class Main {
     streamDemo.mcu().stream().sorted(Comparator.comparing(String::length))
     .collect(Collectors.toList()).forEach
     (consumer.lambdaConsumeStr());
-    System.out.println();
+    ConsumersFactory.newLine();
     // Consume a fixed String Stream using Method Expression
     streamDemo.mcu().stream().sorted(Comparator.comparing(String::length))
     .collect(Collectors.toList()).forEach
     (consumer.methodRefConsumeStr());
-    System.out.println();
+    ConsumersFactory.newLine();
 
   }
 
@@ -114,13 +117,13 @@ public class Main {
     .thenComparing(Comparator.reverseOrder()))
     .collect(Collectors.toList()).forEach
     (consumer.lambdaConsumeStr());
-    System.out.println();
+    ConsumersFactory.newLine();
     // Consume a fixed String Stream using Method Expression
     streamDemo.mcu().stream().sorted(Comparator.comparing(String::length)
     .thenComparing(Comparator.reverseOrder()))
     .collect(Collectors.toList()).forEach
     (consumer.methodRefConsumeStr());
-    System.out.println();
+    ConsumersFactory.newLine();
   }
 
   public static void optionalCalls() {    
@@ -150,14 +153,16 @@ public class Main {
   public static void timeDemoCalls() {
     consumer.lambdaConsumeStr().accept("Time Today: " + dateTimeDemo.currentTimeToday()
     );
-    consumer.methodRefConsumeStr().accept("Time Today[Zone]: " + dateTimeDemo.currentTimeToday().toInstant(ZoneOffset.UTC));
-    
-    consumer.lambdaConsumeStr().accept("Millis: " + dateTimeDemo.currentTimeToday().toInstant(ZoneOffset.UTC).toEpochMilli());
+    consumer.methodRefConsumeStr().accept("Time Today[Zone]: " + dateTimeDemo.currentTimeToday().toInstant(ZoneOffset.UTC));   
     
     consumer.methodRefConsumeStr().accept("Today: " + dateTimeDemo.today()
     );
     consumer.lambdaConsumeStr().accept("Time Now: " + dateTimeDemo.currentTime()
     );
+
+    ConsumersFactory.newLine();
+
+    consumer.lambdaConsumeStr().accept("Millis: " + dateTimeDemo.currentTimeToday().toInstant(ZoneOffset.UTC).toEpochMilli());
 
     consumer.methodRefConsumeStr().accept("Millis Seconds Now: " + dateTimeDemo.millisTillNow());
 
@@ -169,17 +174,18 @@ public class Main {
 
     consumer.lambdaConsumeStr().accept("Current Time[IST]: " + dateTimeDemo.currentTimeFromMillis(new Date(), dateTimeDemo.istZoneId()));    
 
-    System.out.println();
+    ConsumersFactory.newLine();
   }
 
   public static void timeDemoCalls2() {
+    consumer.lambdaConsumeStr().accept("Days Since 1970: " + dateTimeDemo.daysSince1970());
     consumer.lambdaConsumeStr().accept("Yesterday: " + dateTimeDemo.yesterday());    
     consumer.lambdaConsumeStr().accept("Today: " + dateTimeDemo.today());    
     consumer.lambdaConsumeStr().accept("Tomorrow: " + dateTimeDemo.tomorrow());    
-    System.out.println();
+    ConsumersFactory.newLine();
     consumer.lambdaConsumeStr().accept("Noon: " + dateTimeDemo.noon());    
     consumer.lambdaConsumeStr().accept("Midnight: " + dateTimeDemo.midNight());    
-    System.out.println();   
+    ConsumersFactory.newLine();
 
   }
 
