@@ -165,7 +165,9 @@ public class Main {
 
     consumer.methodRefConsumeStr().accept("Current Time: " + dateTimeDemo.currentTimeFromMillis()); 
 
-    consumer.lambdaConsumeStr().accept("Current Time[From Date]: " + dateTimeDemo.currentTimeFromMillis(new Date()));    
+    consumer.lambdaConsumeStr().accept("Current Time[From Date]: " + dateTimeDemo.currentTimeFromMillis(new Date()));       
+
+    consumer.lambdaConsumeStr().accept("Current Time[IST]: " + dateTimeDemo.currentTimeFromMillis(new Date(), dateTimeDemo.istZoneId()));    
 
     System.out.println();
   }
@@ -174,6 +176,11 @@ public class Main {
     consumer.lambdaConsumeStr().accept("Yesterday: " + dateTimeDemo.yesterday());    
     consumer.lambdaConsumeStr().accept("Today: " + dateTimeDemo.today());    
     consumer.lambdaConsumeStr().accept("Tomorrow: " + dateTimeDemo.tomorrow());    
+    System.out.println();
+    consumer.lambdaConsumeStr().accept("Noon: " + dateTimeDemo.noon());    
+    consumer.lambdaConsumeStr().accept("Midnight: " + dateTimeDemo.midNight());    
+    System.out.println();   
+
   }
 
   public static void main(String[] args) {    

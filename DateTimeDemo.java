@@ -28,6 +28,15 @@ public class DateTimeDemo {
         return today().minusDays(1);
       }
 
+      public LocalTime noon() {
+        return LocalTime.of(12, 0, 0);
+      }
+
+      public LocalTime midNight() {
+        return LocalTime.of(23, 59, 59);
+      }
+
+
       public LocalTime currentTime() {
         return LocalTime.now();
       }
@@ -38,6 +47,10 @@ public class DateTimeDemo {
 
       public ZoneId utcZoneId() {
         return ZoneId.of("Z");
+      }
+
+      public ZoneId istZoneId() {
+        return ZoneId.of(ZoneId.SHORT_IDS.get("IST"));
       }
 
       public ZoneOffset utcZoneOffset() {
@@ -56,6 +69,14 @@ public class DateTimeDemo {
         return LocalDateTime.ofInstant(
           Instant.ofEpochMilli(date.getTime()),
             utcZoneId()
+        );
+      }
+
+
+    public LocalDateTime currentTimeFromMillis(Date date, ZoneId zoneId) {
+        return LocalDateTime.ofInstant(
+          Instant.ofEpochMilli(date.getTime()),
+            zoneId
         );
       }
 }
