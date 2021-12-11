@@ -32,22 +32,22 @@ Ingress is a Kubernetes API object which facilitates HTTP and HTTPS routing from
 Ingress can also be defined as a level 7 (Application Level) load balancer
 
 ## 3. What is difference between Layer 4 and Layer 7 Load balancer ?
-Layer 4 load balancer operates at the transport layer of the [OSI model](https://en.wikipedia.org/wiki/OSI_model) 
+* Layer 4 load balancer operates at the transport layer of the [OSI model](https://en.wikipedia.org/wiki/OSI_model) 
 It has the following pros
-* Suitable for packet-level balancing of loads
-* It is quick and efficient because it does not take data into account
-* Because packets are not examined, they are more secure. If it is compromised, no one will be able to access the data
-* It just forwards the packets. It does not need to decrypt the content before forwarding
-* Maintains only one NATed connection between the client and the server, allowing your load balancer to serve a maximum number of TCP connections
-and following cons
-* Based on the content, smart load balancing is not possible
-* Because it is a stateful protocol, it must be sticky. When a connection is established, it is routed to a single server in the backend. All packets sent through this connection are routed to a single server. Based on the algorithm, the next connection will select another server
+ * Suitable for packet-level balancing of loads
+ * It is quick and efficient because it does not take data into account
+ * Because packets are not examined, they are more secure. If it is compromised, no one will be able to access the data
+ * It just forwards the packets. It does not need to decrypt the content before forwarding
+ * Maintains only one NATed connection between the client and the server, allowing your load balancer to serve a maximum number of TCP connections
+   and following cons
+ * Based on the content, smart load balancing is not possible
+ * Because it is a stateful protocol, it must be sticky. When a connection is established, it is routed to a single server in the backend. All packets sent through this connection      are routed to a single server. Based on the algorithm, the next connection will select another server
 
-Layer 7 load balancer operates at the application layer of the of the [OSI model](https://en.wikipedia.org/wiki/OSI_model) 
+* Layer 7 load balancer operates at the application layer of the of the [OSI model](https://en.wikipedia.org/wiki/OSI_model) 
 It has the following pros 
-* Based on the URL, it provides smart routing
-* Caching
-and following cons
-* Expensive
-* Decryption is required
+ * Based on the URL, it provides smart routing
+ * Caching
+   and following cons
+ * Expensive
+ * Decryption is required
 
