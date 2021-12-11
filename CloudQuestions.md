@@ -2,7 +2,7 @@
 New Features Of Java 8 - Java 11 and other Interview Questions
 
 
-### What is the difference between API Gateway and Service Discovery ?
+### 1. What is the difference between API Gateway and Service Discovery ?
 * API Gateway - we have to register services with its URL and matching patterns like this
 ```
 id: your-cloud-service
