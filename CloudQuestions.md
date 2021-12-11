@@ -51,3 +51,7 @@ Ingress can also be defined as a level 7 (Application Level) load balancer
     * Expensive
     * Decryption is required
 
+## 4. What is CI / CD ? What is the difference between CI and CD ?
+* CI - Continous Integration - Automated process of integrating the feature branch code into main baseline code and running integration test to check sanity
+* CD - Continous Delivery - Automated process of pushing integrated changes into various enviroments in a sustained way
+* CD - Continous Deployment - Automated process of deployment of new releases to customers unless broken by tests
