@@ -1,4 +1,4 @@
-# java8-11 and Interview Questions
+# Interview Questions
 New Features Of Java 8 - Java 11 and other Interview Questions
 
 
