@@ -27,3 +27,6 @@ In this case, a gateway will fail to route to other instances
      defaultZone: http://localhost:8761/eureka/
 ```
 
+### 2. What is Ingress ? Why do we need this ?
+Ingress is a Kubernetes API object which facilitates HTTP and HTTPS routing from outside cluster to within cluster. Ingress is needed to expose services over HTTP(S)
+Ingress can also be defined as a level 7 (Application Level) load balancer
