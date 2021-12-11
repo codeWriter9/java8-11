@@ -1,5 +1,5 @@
 # Cloud Interview Questions
-New Features Of Java 8 - Java 11 and other Interview Questions
+Cloud Interview Questions
 
 
 ## 1. What is the difference between API Gateway and Service Discovery ?
