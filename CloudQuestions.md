@@ -2,7 +2,7 @@
 New Features Of Java 8 - Java 11 and other Interview Questions
 
 
-#### 1. What is the difference between API Gateway and Service Discovery ?
+## 1. What is the difference between API Gateway and Service Discovery ?
 * API Gateway - we have to register services with its URL and matching patterns like this
 ```
 id: your-cloud-service
@@ -27,11 +27,11 @@ In this case, a gateway will fail to route to other instances
      defaultZone: http://localhost:8761/eureka/
 ```
 
-#### 2. What is Ingress ? Why do we need this ?
+## 2. What is Ingress ? Why do we need this ?
 Ingress is a Kubernetes API object which facilitates HTTP and HTTPS routing from outside cluster to within cluster. Ingress is needed to expose services over HTTP(S).
 Ingress can also be defined as a level 7 (Application Level) load balancer
 
-#### 3. What is difference between Layer 4 and Layer 7 Load balancer ?
+## 3. What is difference between Layer 4 and Layer 7 Load balancer ?
 Layer 4 load balancer operates at the transport layer of the [OSI model](https://en.wikipedia.org/wiki/OSI_model) 
 It has the following pros
 * Suitable for packet-level balancing of loads
