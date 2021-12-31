@@ -10,3 +10,6 @@ another abstract/interface type
 * Adapter - Recognizeable by creational methods taking an instance of different abstract/interface type and returning an implementation of own/another abstract/interface type which decorates/overrides the given instance
   * [java.util.Arrays.html#asList(T...)](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Arrays.html#asList(T...))  
   * [java.util.Collections#list()](https://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#list-java.util.Enumeration-)
+* Builder - Recognizeable by creational methods returning the instance itself
+  * [java.lang.StringBuilder.append()](https://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html#append-boolean-)  
+  * [java.lang.StringBuffer.append()](https://docs.oracle.com/javase/8/docs/api/java/util/StringBuffer.html#append-boolean-)
