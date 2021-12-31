@@ -6,7 +6,7 @@ public class PredicateDemo {
   movie.contains("Batman") || movie.contains("Dark Knight");
 
   public static Predicate<String> spiderman = movie ->
-  movie.contains("Spideman") || movie.contains("home")
+  movie.contains("Spiderman") || movie.contains("home")
   || movie.contains("Home");
 
 }
