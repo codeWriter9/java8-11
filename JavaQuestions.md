@@ -12,4 +12,4 @@ another abstract/interface type
   * [java.util.Collections#list()](https://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#list-java.util.Enumeration-)
 * Builder - Recognizeable by creational methods returning the instance itself
   * [java.lang.StringBuilder.append()](https://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html#append-boolean-)  
-  * [java.lang.StringBuffer.append()](https://docs.oracle.com/javase/8/docs/api/java/util/StringBuffer.html#append-boolean-)
+  * [java.lang.StringBuffer.append()](https://docs.oracle.com/javase/7/docs/api/java/lang/StringBuffer.html#append(boolean))
