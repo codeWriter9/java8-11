@@ -55,3 +55,6 @@ Ingress can also be defined as a level 7 (Application Level) load balancer
 * CI - Continous Integration - Automated process of integrating the feature branch code into main baseline code and running integration test to check sanity
 * CD - Continous Delivery - Automated process of pushing integrated changes into various enviroments in a sustained way
 * CD - Continous Deployment - Automated process of deployment of new releases to customers unless broken by tests
+
+## 5. What is a Bounded Context ?
+Bounded Context is a DDD (Domain Driven Design) pattern which force a [polyseme](https://en.wikipedia.org/wiki/Polysemy) to have a single internal consistent meaning with the context but allows interrelationships with other bounded contexts within the organization.
