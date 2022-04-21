@@ -1,6 +1,7 @@
 import java.util.Comparator;
 import java.util.Date;
 import java.util.stream.Collectors;
+import java.util.function.Function;
 import java.time.ZoneOffset;
 
 
@@ -34,6 +35,18 @@ public class Main {
     // Consume a Stream using Method Expression
     streamDemo.fixedStream().forEach(consumer.methodRefConsume());  
     ConsumersFactory.newLine();
+
+
+    // Lambda consume a Stream
+    streamDemo.addBy(x -> x + 1).limit(5)
+      .forEach(consumer.lambdaConsume());
+    ConsumersFactory.newLine();
+    // Consume a Stream using Method Expression
+    streamDemo.addBy(x -> x + 1).limit(5)
+      .forEach(consumer.methodRefConsume());  
+    ConsumersFactory.newLine();
+
+    
     // Lambda consume a random Double Stream
     streamDemo.randomStream().limit(5).forEach(consumer.lambdaConsumeDouble());
     ConsumersFactory.newLine();
@@ -191,16 +204,16 @@ public class Main {
 
   public static void main(String[] args) {    
     //threadCalls();
-    //streamCalls();    
-    //streamCalls2();
-    //streamCalls3();
-    //streamCalls4();
-    //streamCalls5();
-    //streamCalls6();
+    streamCalls();    
+    streamCalls2();
+    streamCalls3();
+    streamCalls4();
+    streamCalls5();
+    streamCalls6();
     //optionalCalls();
     //optionalCalls2();
     //stringCalls();
-    timeDemoCalls();
-    timeDemoCalls2();
+    //timeDemoCalls();
+    //timeDemoCalls2();
   }
 }
