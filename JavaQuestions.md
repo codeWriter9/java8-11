@@ -18,7 +18,13 @@ another abstract/interface type
   It can be accessed in a subclass or a subinterface via &lt;SuperInterface&gt;.super.&lt;method&gt;
 
 
-## 3. What is difference between POST, PUT and PATCH methods ?
+## 3. What is the difference between POST, PUT and PATCH methods ?
 * POST - This is a REST method used for creating a new resource. If the resource already exists a new possibly duplicate resource would be created. [rfc2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5)
 * PUT - This is a REST method used to update a resource if that exists or create a new one if it doesn't. [rfc2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.6)
 * PATCH - This is a REST method used to update a resource. [rfc2068](https://www.rfc-editor.org/rfc/rfc2068)
+
+# 4. What is the difference between URI, URL and URN ?
+* URI - Uniform Resource Identifier - A collection or string of characters that uniquely identify a name or a resource on internet
+* URL - Uniform Resource Locator - A type of URI that specifies how to reach a resource on internet
+* URN - Uniform Resource Name - A type of URI that uses the special naming convention of URN
+[URI java docs](https://docs.oracle.com/javase/8/docs/api/java/net/URI.html)
