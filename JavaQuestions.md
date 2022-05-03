@@ -32,3 +32,5 @@ another abstract/interface type
 * URN - Uniform Resource Name - A type of URI that uses the special naming convention of URN
    
 [URI java docs](https://docs.oracle.com/javase/8/docs/api/java/net/URI.html)
+    
+[URL java docs](https://docs.oracle.com/javase/8/docs/api/java/net/URL.html)
