@@ -31,6 +31,5 @@ another abstract/interface type
 * URL - Uniform Resource Locator - A type of URI that specifies how to reach a resource on internet
 * URN - Uniform Resource Name - A type of URI that uses the special naming convention of URN
    
-[URI java docs](https://docs.oracle.com/javase/8/docs/api/java/net/URI.html)
-    
+[URI java docs](https://docs.oracle.com/javase/8/docs/api/java/net/URI.html)         
 [URL java docs](https://docs.oracle.com/javase/8/docs/api/java/net/URL.html)
