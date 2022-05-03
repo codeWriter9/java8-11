@@ -13,3 +13,12 @@ another abstract/interface type
 * Builder - Recognizeable by creational methods returning the instance itself
   * [java.lang.StringBuilder.append()](https://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html#append-boolean-)  
   * [java.lang.StringBuffer.append()](https://docs.oracle.com/javase/7/docs/api/java/lang/StringBuffer.html#append(boolean))
+
+## 2. How can you access Super Interface default methods ?
+  It can be accessed in a subclass or a subinterface via <SuperInterface>.super.<method>
+
+
+## 3. What is difference between POST, PUT and PATCH methods ?
+* POST - This is a REST method used for creating a new resource. If the resource already exists a new possibly duplicate resource would be created. [rfc2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5)
+* PUT - This is a REST method used to update a resource if that exists or create a new one if it doesn't. [rfc2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.6)
+* PATCH - This is a REST method used to update a resource. [rfc2068](https://www.rfc-editor.org/rfc/rfc2068)
