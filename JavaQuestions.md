@@ -26,7 +26,7 @@ another abstract/interface type
 * PUT - This is a REST method used to update a resource if that exists or create a new one if it doesn't. [rfc2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.6)
 * PATCH - This is a REST method used to update a resource. [rfc2068](https://www.rfc-editor.org/rfc/rfc2068)
 
-# 4. What is the difference between URI, URL and URN ?
+## 4. What is the difference between URI, URL and URN ?
 * URI - Uniform Resource Identifier - A collection or string of characters that uniquely identify a name or a resource on internet
 * URL - Uniform Resource Locator - A type of URI that specifies how to reach a resource on internet
 * URN - Uniform Resource Name - A type of URI that uses the special naming convention of URN
