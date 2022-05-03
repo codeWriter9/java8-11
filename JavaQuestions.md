@@ -15,7 +15,7 @@ another abstract/interface type
   * [java.lang.StringBuffer.append()](https://docs.oracle.com/javase/7/docs/api/java/lang/StringBuffer.html#append(boolean))
 
 ## 2. How can you access Super Interface default methods ?
-  It can be accessed in a subclass or a subinterface via <SuperInterface>.super.<method>
+  It can be accessed in a subclass or a subinterface via &lt;SuperInterface&gt;.super.&lt;method&gt;
 
 
 ## 3. What is difference between POST, PUT and PATCH methods ?
