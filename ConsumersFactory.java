@@ -6,31 +6,31 @@ public class ConsumersFactory {
     System.out.println();
   }
 
-  public Consumer<Integer> lambdaConsume() {
+  public static Consumer<Integer> lambdaConsume() {
     return x -> System.out.print(x + ", ");
   }
 
-  public Consumer<Integer> methodRefConsume() {
+  public static Consumer<Integer> methodRefConsume() {
     return System.out::print;
   }
 
-  public Consumer<Long> methodRefConsumeLong() {
+  public static Consumer<Long> methodRefConsumeLong() {
     return System.out::println;
   }
 
-  public Consumer<Double> lambdaConsumeDouble() {
+  public static Consumer<Double> lambdaConsumeDouble() {
     return x -> System.out.print(x + ", ");
   }
 
-  public Consumer<Double> methodRefConsumeDouble() {
+  public static Consumer<Double> methodRefConsumeDouble() {
     return System.out::print;
   }
 
-  public Consumer<String> lambdaConsumeStr() {
+  public static Consumer<String> lambdaConsumeStr() {
     return x -> System.out.println(x);
   }
 
-  public Consumer<String> methodRefConsumeStr() {
+  public static Consumer<String> methodRefConsumeStr() {
     return System.out::println;
   }
 

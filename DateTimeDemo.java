@@ -12,6 +12,54 @@ import java.util.Date;
 
 public class DateTimeDemo {
 
+  private static DateTimeDemo dateTimeDemo;
+
+  public static DateTimeDemo getInstance() {
+    if(dateTimeDemo == null) {
+      dateTimeDemo = new DateTimeDemo();
+    }
+    return dateTimeDemo;
+  }
+
+      public void timeDemoCalls() {
+    ConsumersFactory.lambdaConsumeStr().accept("Time Today: " + this.currentTimeToday()
+    );
+    ConsumersFactory.methodRefConsumeStr().accept("Time Today[Zone]: " + this.currentTimeToday().toInstant(ZoneOffset.UTC));   
+    
+    ConsumersFactory.methodRefConsumeStr().accept("Today: " + this.today()
+    );
+    ConsumersFactory.lambdaConsumeStr().accept("Time Now: " + this.currentTime()
+    );
+
+    ConsumersFactory.newLine();
+
+    ConsumersFactory.lambdaConsumeStr().accept("Millis: " + this.currentTimeToday().toInstant(ZoneOffset.UTC).toEpochMilli());
+
+    ConsumersFactory.methodRefConsumeStr().accept("Millis Seconds Now: " + this.millisTillNow());
+
+    ConsumersFactory.lambdaConsumeStr().accept("Legacy Date with Millis: " + new Date(this.millisTillNow()));
+
+    ConsumersFactory.methodRefConsumeStr().accept("Current Time: " + this.currentTimeFromMillis()); 
+
+    ConsumersFactory.lambdaConsumeStr().accept("Current Time[From Date]: " + this.currentTimeFromMillis(new Date()));       
+
+    ConsumersFactory.lambdaConsumeStr().accept("Current Time[IST]: " + this.currentTimeFromMillis(new Date(), this.istZoneId()));    
+
+    ConsumersFactory.newLine();
+  }
+
+  public  void timeDemoCalls2() {
+    ConsumersFactory.lambdaConsumeStr().accept("Days Since 1970: " + this.daysSince1970());
+    ConsumersFactory.lambdaConsumeStr().accept("Yesterday: " + this.yesterday());    
+    ConsumersFactory.lambdaConsumeStr().accept("Today: " + this.today());    
+    ConsumersFactory.lambdaConsumeStr().accept("Tomorrow: " + this.tomorrow());    
+    ConsumersFactory.newLine();
+    ConsumersFactory.lambdaConsumeStr().accept("Noon: " + this.noon());    
+    ConsumersFactory.lambdaConsumeStr().accept("Midnight: " + this.midNight());    
+    ConsumersFactory.newLine();
+
+  }
+
       public LocalDateTime currentTimeToday() {
         return LocalDateTime.now();
       }
