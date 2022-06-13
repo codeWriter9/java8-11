@@ -10,6 +10,32 @@ import java.util.stream.Stream;
 
 public class OptionalDemo {
 
+  private static OptionalDemo optionalDemo;
+
+  public static OptionalDemo getInstance() {
+    if(optionalDemo == null) {
+      optionalDemo = new OptionalDemo();
+    }
+    return optionalDemo;
+  }
+
+  public void optionalCalls(ConsumersFactory consumer) {    
+    // Consume only if present or show that value is not there
+    consumer.lambdaConsumeStr().accept(optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).orElse("Value Not Present"));
+    consumer.lambdaConsumeStr().accept(optionalDemo.findFirst(PredicateDemo.spiderman, optionalDemo.mcu()).orElse("Value Not Present"));
+
+    consumer.methodRefConsumeStr().accept(optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).orElse("Value Not Present"));
+    consumer.methodRefConsumeStr().accept(optionalDemo.findFirst(PredicateDemo.spiderman, optionalDemo.mcu()).orElse("Value Not Present"));
+  }
+
+  public void optionalCalls2(ConsumersFactory consumer) {    
+    // Consume only if present 
+    optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).ifPresent(consumer.lambdaConsumeStr());
+    optionalDemo.findFirst(PredicateDemo.spiderman, optionalDemo.mcu()).ifPresent(consumer.lambdaConsumeStr());
+    optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).ifPresent(consumer.methodRefConsumeStr());
+    optionalDemo.findFirst(PredicateDemo.spiderman, optionalDemo.mcu()).ifPresent(consumer.methodRefConsumeStr());
+  }
+
   public List<String> mcu() {
     return Arrays.asList("Iron Man", "The Incredible Hulk",
     "Iron Man 2", "Thor", "Captain America: The First Avenger",

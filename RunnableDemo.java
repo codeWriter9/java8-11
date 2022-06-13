@@ -1,5 +1,24 @@
 class RunnableDemo {
 
+  private static RunnableDemo demo; 
+
+  public void threadCalls() {
+    // Thread call 
+    // call 1
+    this.oldWay().start();    
+    // call 2
+    this.newWay().start();
+    // call 3
+    new Thread(this.newWay2()).start();
+  }
+
+  public static RunnableDemo getInstance() {
+    if(demo == null) {
+      demo = new RunnableDemo();        
+    }
+    return demo;
+  }
+
   public Thread oldWay() {
     // Inner class 
     return new Thread(new Runnable()

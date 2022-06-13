@@ -1,7 +1,6 @@
 import java.util.Comparator;
 import java.util.Date;
 import java.util.stream.Collectors;
-import java.util.function.Function;
 import java.time.ZoneOffset;
 
 
@@ -9,24 +8,13 @@ import java.time.ZoneOffset;
 
 public class Main {
 
-  private static RunnableDemo runnableDemo = new RunnableDemo();
+
   private static StreamDemo streamDemo = new StreamDemo();
-  private static ConsumersFactory consumer = new ConsumersFactory();
-  private static PredicateDemo predicateDemo = new PredicateDemo();
-  private static OptionalDemo optionalDemo = new OptionalDemo();
+  private static ConsumersFactory consumer = new ConsumersFactory();  
+  
   private static StringDemo stringDemo = new StringDemo();
   private static DateTimeDemo dateTimeDemo = new DateTimeDemo();
 
-  public static void threadCalls() {
-    // Thread call 
-    // call 1
-    runnableDemo.oldWay().start();    
-    // call 2
-    runnableDemo.newWay().start();
-    // call 3
-    new Thread(runnableDemo.newWay2()).start();
-    
-  }    
 
   public static void streamCalls() {    
     // Lambda consume a Stream
@@ -139,22 +127,7 @@ public class Main {
     ConsumersFactory.newLine();
   }
 
-  public static void optionalCalls() {    
-    // Consume only if present or show that value is not there
-    consumer.lambdaConsumeStr().accept(optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).orElse("Value Not Present"));
-    consumer.lambdaConsumeStr().accept(optionalDemo.findFirst(PredicateDemo.spiderman, optionalDemo.mcu()).orElse("Value Not Present"));
-
-    consumer.methodRefConsumeStr().accept(optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).orElse("Value Not Present"));
-    consumer.methodRefConsumeStr().accept(optionalDemo.findFirst(PredicateDemo.spiderman, optionalDemo.mcu()).orElse("Value Not Present"));
-  }
-
-  public static void optionalCalls2() {    
-    // Consume only if present 
-    optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).ifPresent(consumer.lambdaConsumeStr());
-    optionalDemo.findFirst(PredicateDemo.spiderman, optionalDemo.mcu()).ifPresent(consumer.lambdaConsumeStr());
-    optionalDemo.findFirst(PredicateDemo.batman, optionalDemo.mcu()).ifPresent(consumer.methodRefConsumeStr());
-    optionalDemo.findFirst(PredicateDemo.spiderman, optionalDemo.mcu()).ifPresent(consumer.methodRefConsumeStr());
-  }
+  
 
   public static void stringCalls() {    
     consumer.lambdaConsumeStr().accept(stringDemo.repeatCaller("La ", 2, "Land"));
@@ -203,17 +176,17 @@ public class Main {
   }
 
   public static void main(String[] args) {    
-    //threadCalls();
-    streamCalls();    
-    streamCalls2();
-    streamCalls3();
-    streamCalls4();
-    streamCalls5();
-    streamCalls6();
-    //optionalCalls();
-    //optionalCalls2();
-    //stringCalls();
-    //timeDemoCalls();
-    //timeDemoCalls2();
+    //RunnableDemo.getInstance().threadCalls();
+    // streamCalls();    
+    // streamCalls2();
+    // streamCalls3();
+    // streamCalls4();
+    // streamCalls5();
+    // streamCalls6();
+    OptionalDemo.getInstance().optionalCalls(new ConsumersFactory());
+    OptionalDemo.getInstance().optionalCalls2(new ConsumersFactory());
+    // stringCalls();
+    // timeDemoCalls();
+    // timeDemoCalls2();
   }
 }
